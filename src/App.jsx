@@ -9,7 +9,7 @@ const App = () => {
     <BrowserRouter>
       <SideBar>
         <Routes>
-          <Route path="/" element={<Gestion />} />
+          <Route path="/gestion" element={<Gestion />} />
           <Route path="/cartera" element={<Cartera />} />
           <Route path="/facturacion" element={<Facturacion />} />
         </Routes>

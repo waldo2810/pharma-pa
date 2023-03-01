@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: Inter;
+}
+
+.title {
+  font-family: Epilogue, Inter;
+}
+
+h1 {
+  font-weight: bold;
+}
+
+.title,
+h1 {
+  font-size: 2rem;
+}
+
+.active {
+  background-color: #112d4e;
+  color: #f9f7f7;
+}
+
+.active svg {
+  stroke: #f9f7f7;
+}
