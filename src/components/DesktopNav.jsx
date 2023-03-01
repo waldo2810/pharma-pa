@@ -1,18 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { toggleOff, toggleOn } from "../state/state";
 import { NavLink } from "react-router-dom";
+import { menuItems } from "../utils/menuItems";
 
 import { MdMenu as Toggle } from "react-icons/md";
-import { MdManageSearch as GestionIcon } from "react-icons/md";
-import { MdOutlineAccountBalanceWallet as CarteraIcon } from "react-icons/md";
-import { MdOutlineReceiptLong as FacturacionIcon } from "react-icons/md";
 
 const DesktopNav = () => {
-  const menuItems = [
-    { icon: <GestionIcon className="icon" />, name: "Gestion" },
-    { icon: <CarteraIcon className="icon" />, name: "Cartera" },
-    { icon: <FacturacionIcon className="icon" />, name: "Facturacion" },
-  ];
   const isOpen = useSelector((state) => state.isOpen);
   const dispatch = useDispatch();
   const handleToggle = () =>
@@ -24,8 +17,8 @@ const DesktopNav = () => {
         isOpen ? "lg:w-[20%]" : "lg:w-[6%]"
       }`}
     >
-      <Toggle className="text-4xl cursor-pointer" onClick={handleToggle} />
-      <div className="nav-links flex flex-col gap-5 items-center justify-center h-full">
+      <Toggle className="text-2xl cursor-pointer" onClick={handleToggle} />
+      <div className="nav-links flex flex-col gap-5 items-center pt-10 h-full">
         {menuItems.map((item, index) => (
           <NavLink
             to={`/${item.name.toLowerCase()}`}

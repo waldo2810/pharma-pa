@@ -11,6 +11,7 @@ const App = () => {
       <SideBar>
         <Routes>
           <Route index path="/" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/gestion" element={<Gestion />} />
           <Route path="/cartera" element={<Cartera />} />
           <Route path="/facturacion" element={<Facturacion />} />

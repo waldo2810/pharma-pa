@@ -1,18 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { toggleOff, toggleOn } from "../state/state";
 import { NavLink } from "react-router-dom";
+import { menuItems } from "../utils/menuItems";
 
 import { MdMenu as Toggle } from "react-icons/md";
-import { MdManageSearch as GestionIcon } from "react-icons/md";
-import { MdOutlineAccountBalanceWallet as CarteraIcon } from "react-icons/md";
-import { MdOutlineReceiptLong as FacturacionIcon } from "react-icons/md";
 
 const MobileNav = () => {
-  const menuItems = [
-    { icon: <GestionIcon className="icon" />, name: "Gestion" },
-    { icon: <CarteraIcon className="icon" />, name: "Cartera" },
-    { icon: <FacturacionIcon className="icon" />, name: "Facturacion" },
-  ];
   const isOpen = useSelector((state) => state.isOpen);
   const dispatch = useDispatch();
   const handleToggle = () =>
@@ -28,7 +21,7 @@ const MobileNav = () => {
         </NavLink>
       </div>
       {isOpen && (
-        <div className="flex flex-col gap-5 items-center justify-center pt-5">
+        <div className="flex flex-col gap-2 items-center justify-center pt-5">
           {menuItems.map((item, index) => (
             <NavLink
               to={`/${item.name.toLowerCase()}`}
