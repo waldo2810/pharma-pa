@@ -6,15 +6,20 @@ body {
   font-family: Inter;
 }
 
+.icon {
+  font-size: 1.875rem;
+}
+
 .title {
   font-family: Epilogue, Inter;
+  font-weight: 300;
+  font-size: 1.5rem;
 }
 
 h1 {
   font-weight: bold;
 }
 
-.title,
 h1 {
   font-size: 2rem;
 }
@@ -24,6 +29,11 @@ h1 {
   color: #f9f7f7;
 }
 
-.active svg {
-  stroke: #f9f7f7;
+.active.title {
+  background-color: transparent;
+  color: #112d4e;
+}
+
+.sidebar {
+  transition: 0.1s ease-in-out;
 }
