@@ -19,7 +19,7 @@ const Tabs = () => {
         <div className="flex gap-2 overflow-auto no-scrollbar">
           {gestionTabsItems.map((item) => (
             <Link
-              to="#"
+              to={`/gestion/${item.toLowerCase()}`}
               className="inline-block p-4 hover:border-b-2 border-transparent hover:border-accent"
               key={item}
             >
