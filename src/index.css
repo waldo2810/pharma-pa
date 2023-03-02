@@ -12,11 +12,6 @@ body {
   font-size: 1.5rem;
 }
 
-sidebar .active {
-  background-color: #112d4e;
-  color: #f9f7f7;
-}
-
 .active.title {
   background-color: transparent;
   color: #112d4e;
