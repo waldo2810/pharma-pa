@@ -17,24 +17,26 @@ const DesktopNav = () => {
         isOpen ? "lg:w-[20%]" : "lg:w-[6%]"
       }`}
     >
-      <Toggle className="text-2xl cursor-pointer" onClick={handleToggle} />
-      <div className="nav-links flex flex-col gap-5 items-center pt-10 h-full">
-        {menuItems.map((item, index) => (
-          <NavLink
-            to={`/${item.name.toLowerCase()}`}
-            className={`flex gap-2 items-center lg:w-full px-5 py-3 rounded-md text-[#000] transition ease-in-out delay-50
+      <div className={!isOpen && `flex flex-col items-center`}>
+        <Toggle className="text-2xl cursor-pointer" onClick={handleToggle} />
+        <div className="nav-links flex flex-col gap-5 items-center pt-10 h-full">
+          {menuItems.map((item, index) => (
+            <NavLink
+              to={`/${item.name.toLowerCase()}`}
+              className={`flex gap-2 items-center lg:w-full px-5 py-3 rounded-md text-[#000] transition ease-in-out delay-50
             hover:bg-dark hover:text-light
         ${!isOpen && "justify-center"}`}
-            key={index}
-          >
-            <div className="text-[1.5rem]">{item.icon}</div>
-            {isOpen && (
-              <div className="text">
-                <p className="text-[0.9rem]">{item.name}</p>
-              </div>
-            )}
-          </NavLink>
-        ))}
+              key={index}
+            >
+              <div className="text-[1.5rem]">{item.icon}</div>
+              {isOpen && (
+                <div className="text">
+                  <p className="text-[0.9rem]">{item.name}</p>
+                </div>
+              )}
+            </NavLink>
+          ))}
+        </div>
       </div>
     </div>
   );

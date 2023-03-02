@@ -6,24 +6,27 @@ const Tabs = () => {
   const isNotAPhone = useMediaQuery("(min-width: 1000px)");
 
   return (
-    <div>
+    <div className={isNotAPhone && `my-10`}>
       <NavLink to="/" className="title">
-        {isNotAPhone && <div class="px-6">pharma.pa</div>}
+        {isNotAPhone && <div className="px-5">pharma.pa</div>}
       </NavLink>
 
-      <div class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 ">
-        <ul class="flex flex-wrap -mb-px">
-          <li class="mr-2">
-            {gestionTabsItems.map((item) => (
-              <Link
-                to="#"
-                className="inline-block p-4 hover:border-b-2 border-transparent hover:border-black px-10"
-              >
-                {item}
-              </Link>
-            ))}
-          </li>
-        </ul>
+      <div
+        className={`text-sm font-medium border-b border-dark ${
+          isNotAPhone && "pt-3"
+        }`}
+      >
+        <div className="flex gap-2 overflow-auto no-scrollbar">
+          {gestionTabsItems.map((item) => (
+            <Link
+              to="#"
+              className="inline-block p-4 hover:border-b-2 border-transparent hover:border-accent"
+              key={item}
+            >
+              {item}
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );
