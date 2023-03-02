@@ -29,7 +29,7 @@ const MobileNav = () => {
               key={index}
             >
               {item.icon}
-              <p>{item.name}</p>
+              <p className="text-[0.9rem]">{item.name}</p>
             </NavLink>
           ))}
         </div>

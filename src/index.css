@@ -6,29 +6,13 @@ body {
   font-family: Inter;
 }
 
-.icon {
-  font-size: 1.5rem;
-}
-
-p {
-  font-size: 0.9rem;
-}
-
 .title {
   font-family: Epilogue, Inter;
   font-weight: 300;
   font-size: 1.5rem;
 }
 
-h1 {
-  font-weight: bold;
-}
-
-h1 {
-  font-size: 2rem;
-}
-
-.sidebar .active {
+sidebar .active {
   background-color: #112d4e;
   color: #f9f7f7;
 }

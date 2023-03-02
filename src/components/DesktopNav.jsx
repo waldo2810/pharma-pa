@@ -27,10 +27,10 @@ const DesktopNav = () => {
         ${!isOpen && "justify-center"}`}
             key={index}
           >
-            <div className="icon">{item.icon}</div>
+            <div className="text-[1.5rem]">{item.icon}</div>
             {isOpen && (
               <div className="text">
-                <p>{item.name}</p>
+                <p className="text-[0.9rem]">{item.name}</p>
               </div>
             )}
           </NavLink>
