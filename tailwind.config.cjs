@@ -7,6 +7,7 @@ module.exports = {
       accent: "#3F72AF",
       dark: "#112D4E",
       lightblue: "#DBE2EF",
+      black: "#000"
     },
     extend: {},
   },
