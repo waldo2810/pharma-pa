@@ -1,4 +1,4 @@
-export const gestionFormInfo = [
+export const medicamentoFormInfo = [
   {
     type: "text",
     title: "Codigo",

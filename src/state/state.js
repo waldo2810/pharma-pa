@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isOpen: false,
+  currentTab: "medicamentos",
 };
 
 export const stateSlice = createSlice({
@@ -13,6 +14,9 @@ export const stateSlice = createSlice({
     },
     toggleOff: (state) => {
       state.isOpen = false;
+    },
+    setCurrentTab: (state, action) => {
+      state.currentTab = action.payload.currentTab;
     },
   },
 });

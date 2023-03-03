@@ -1,15 +1,20 @@
 import { useState } from "react";
-import { NavLink, Link, useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { setCurrentTab } from "../state/state";
+import { Link } from "react-router-dom";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-import { gestionTabsItems } from "../utils/gestionTabsItems";
+import { gestionTabsItems } from "../utils/tabs-items/gestionTabsItems";
 
 const Tabs = () => {
   const isNotAPhone = useMediaQuery("(min-width: 1000px)");
   const [toggleState, setToggleState] = useState(1);
+  const currentTab = useSelector((state) => state.currentTab);
+  const dispatch = useDispatch();
 
-  const toggleTab = (index) => {
-    setToggleState(index);
+  const toggleTab = (tab) => {
+    dispatch(setCurrentTab({ currentTab: tab }));
+    console.log(tab);
   };
 
   return (
@@ -24,10 +29,11 @@ const Tabs = () => {
 
       <div className={`border-b border-dark ${isNotAPhone && "pt-3"}`}>
         <div className="flex gap-3 overflow-auto no-scrollbar text-sm font-medium">
-          {gestionTabsItems.map((item, index) => (
+          {gestionTabsItems.map((item) => (
             <button
-              className={toggleState === index ? "tabs active-tabs" : "tabs"}
-              onClick={() => toggleTab(index)}
+              key={item}
+              className={currentTab == item ? "tabs active-tabs" : "tabs"}
+              onClick={() => toggleTab(item)}
             >
               {item}
             </button>

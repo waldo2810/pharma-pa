@@ -24,7 +24,9 @@ const MobileNav = () => {
         <div className="flex flex-col gap-2 items-center justify-center pt-5">
           {menuItems.map((item, index) => (
             <NavLink
-              to={`/${item.name.toLowerCase()}`}
+              to={`/${item.name.toLowerCase()}/${
+                item.name === "Gestion" ? `${currentTab}` : ""
+              }`}
               className="flex gap-2 items-center w-full lg:w-[70%] px-5 py-3 rounded-md text-[#000] transition ease-in-out delay-50 hover:bg-dark hover:text-light"
               key={index}
             >
