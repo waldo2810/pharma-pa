@@ -5,7 +5,7 @@ const initialState = {
 };
 
 export const stateSlice = createSlice({
-  name: "isOpen",
+  name: "state",
   initialState,
   reducers: {
     toggleOn: (state) => {
@@ -17,5 +17,5 @@ export const stateSlice = createSlice({
   },
 });
 
-export const { toggleOn, toggleOff } = stateSlice.actions;
+export const { toggleOn, toggleOff, setCurrentTab } = stateSlice.actions;
 export default stateSlice.reducer;
