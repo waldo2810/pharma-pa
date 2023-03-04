@@ -1,19 +1,43 @@
+import { useEffect, useState } from "react";
+
 import Button from "../components/Button";
 import Input from "../components/Input";
 
-import { medicamentoFormInfo } from "../utils/form-info/gestion-form-info/medicamentoFormInfo";
+import {
+  medicamentosFormInfo,
+  personasFormInfo,
+  bodegaFormInfo,
+  seccionesFormInfo,
+  correosFormInfo,
+} from "../utils/form-info/gestionFormInfo";
+
 import { useMediaQuery } from "@mui/material";
 
 const GestionContent = ({ tab }) => {
+  const [formInfo, setFormInfo] = useState([]);
   const isNotAPhone = useMediaQuery("(min-width: 1000px)");
 
+  useEffect(() => {
+    if (tab.toLowerCase() === "medicamentos") {
+      setFormInfo(medicamentosFormInfo);
+    } else if (tab.toLowerCase() === "personas") {
+      setFormInfo(personasFormInfo);
+    } else if (tab.toLowerCase() === "bodega") {
+      setFormInfo(bodegaFormInfo);
+    } else if (tab.toLowerCase() === "secciones") {
+      setFormInfo(seccionesFormInfo);
+    } else if (tab.toLowerCase() === "correos") {
+      setFormInfo(correosFormInfo);
+    }
+  });
+
   return (
-    <div>
+    <div className="pb-20">
       <h2 className="text-2xl font-medium p-5">Agregar {tab}</h2>
       <div className="md:border md:border-lightblue md:mx-5 md:rounded-md md:max-w-[80%]">
         <form>
           <div>
-            {medicamentoFormInfo.map(({ title, description, type }, index) => (
+            {formInfo.map(({ title, description, type }, index) => (
               <Input
                 type={type}
                 key={index}

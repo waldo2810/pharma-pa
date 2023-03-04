@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { toggleOff, toggleOn, setCurrentTab } from "../state/state";
+import { toggleOff, toggleOn } from "../state/state";
 import { NavLink } from "react-router-dom";
 import { menuItems } from "../utils/menuItems";
 

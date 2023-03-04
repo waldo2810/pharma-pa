@@ -7,6 +7,7 @@ import { MdMenu as Toggle } from "react-icons/md";
 
 const MobileNav = () => {
   const isOpen = useSelector((state) => state.isOpen);
+  const currentTab = useSelector((state) => state.currentTab);
   const dispatch = useDispatch();
   const handleToggle = () =>
     isOpen ? dispatch(toggleOff()) : dispatch(toggleOn());
