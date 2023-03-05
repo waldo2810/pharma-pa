@@ -29,7 +29,7 @@ const GestionContent = ({ tab }) => {
     } else if (tab.toLowerCase() === "correos") {
       setFormInfo(correosFormInfo);
     }
-  });
+  }, [formInfo]);
 
   return (
     <div className="pb-20">
