@@ -4,6 +4,7 @@ const initialState = {
   isOpen: false,
   currentTab: "medicamentos",
   currentModule: "dashboard",
+  activeModuleStyles: "",
 };
 
 export const stateSlice = createSlice({
@@ -22,9 +23,17 @@ export const stateSlice = createSlice({
     setCurrentModule: (state, action) => {
       state.currentModule = action.payload;
     },
+    setActiveModuleStyles: (state, action) => {
+      state.activeModuleStyles = action.payload;
+    },
   },
 });
 
-export const { toggleOn, toggleOff, setCurrentTab, setCurrentModule } =
-  stateSlice.actions;
+export const {
+  toggleOn,
+  toggleOff,
+  setCurrentTab,
+  setCurrentModule,
+  setActiveModuleStyles,
+} = stateSlice.actions;
 export default stateSlice.reducer;
