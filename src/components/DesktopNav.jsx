@@ -1,16 +1,30 @@
 import { useDispatch, useSelector } from "react-redux";
-import { toggleOff, toggleOn } from "../state/state";
+import { toggleOff, toggleOn, setCurrentModule } from "../state/state";
 import { NavLink } from "react-router-dom";
 import { menuItems } from "../utils/menuItems";
 
 import { MdMenu as Toggle } from "react-icons/md";
+import { useEffect, useState } from "react";
 
 const DesktopNav = () => {
+  const currentModule = useSelector((state) => state.currentModule);
+  const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.isOpen);
   const currentTab = useSelector((state) => state.currentTab);
-  const dispatch = useDispatch();
+  const [activeModuleStyles, setActiveModuleStyles] = useState();
+
   const handleToggle = () =>
     isOpen ? dispatch(toggleOff()) : dispatch(toggleOn());
+  const handleClick = (module) => {
+    dispatch(setCurrentModule(module));
+  };
+
+  useEffect(() => {
+    //TODO FIX THIS!!!!!!!!!!!!!!!!!!
+    console.log(currentModule);
+    setActiveModuleStyles(`flex gap-2 items-center lg:w-full px-5 py-3 rounded-md transition ease-in-out delay-50
+    bg-dark text-light ${!isOpen && "justify-center"}`);
+  }, [currentModule]);
 
   return (
     <div
@@ -21,15 +35,19 @@ const DesktopNav = () => {
       <div className={!isOpen && `flex flex-col items-center`}>
         <Toggle className="text-2xl cursor-pointer" onClick={handleToggle} />
         <div className="nav-links flex flex-col gap-5 items-center pt-10 h-full">
-          {menuItems.map((item, index) => (
+          {menuItems.map((item) => (
             <NavLink
               to={`/${item.name.toLowerCase()}/${
-                item.name === "Gestion" ? `${currentTab}` : ""
+                item.name === "Gestion" ? currentTab : ""
               }`}
-              className={`flex gap-2 items-center lg:w-full px-5 py-3 rounded-md text-[#000] transition ease-in-out delay-50
-            hover:bg-dark hover:text-light
-        ${!isOpen && "justify-center"}`}
-              key={index}
+              className={
+                currentModule == item.name
+                  ? activeModuleStyles
+                  : `flex gap-2 items-center lg:w-full px-5 py-3 rounded-md text-[#000] transition ease-in-out delay-50
+              hover:bg-dark hover:text-light ${!isOpen && "justify-center"}`
+              }
+              key={item.name}
+              onClick={() => handleClick(item.name)}
             >
               <div className="text-[1.5rem]">{item.icon}</div>
               {isOpen && (

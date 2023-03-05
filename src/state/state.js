@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isOpen: false,
   currentTab: "medicamentos",
+  currentModule: "dashboard",
 };
 
 export const stateSlice = createSlice({
@@ -18,8 +19,12 @@ export const stateSlice = createSlice({
     setCurrentTab: (state, action) => {
       state.currentTab = action.payload.currentTab;
     },
+    setCurrentModule: (state, action) => {
+      state.currentModule = action.payload;
+    },
   },
 });
 
-export const { toggleOn, toggleOff, setCurrentTab } = stateSlice.actions;
+export const { toggleOn, toggleOff, setCurrentTab, setCurrentModule } =
+  stateSlice.actions;
 export default stateSlice.reducer;

@@ -7,9 +7,9 @@ import MobileNav from "./MobileNav";
 const SideBar = ({ children }) => {
   const isNotAPhone = useMediaQuery("(min-width: 1000px)");
   return (
-    <div className={`h-full ${isNotAPhone && "flex"}`}>
+    <div className={`h-screen ${isNotAPhone && "flex"}`}>
       {isNotAPhone ? <DesktopNav /> : <MobileNav />}
-      <main className="w-full">
+      <main className="w-full overflow-auto">
         <Tabs />
         {children}
       </main>
