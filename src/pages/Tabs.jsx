@@ -19,7 +19,6 @@ const Tabs = () => {
 
   const toggleTab = (tab) => {
     dispatch(setCurrentTab({ currentTab: tab }));
-    navigate(`gestion/${currentTab.toLowerCase()}`);
   };
 
   useEffect(() => {
@@ -42,13 +41,14 @@ const Tabs = () => {
       <div className={`border-b border-dark ${isNotAPhone && "pt-3"}`}>
         <div className="flex gap-3 overflow-auto no-scrollbar text-sm font-medium">
           {tabItems.map((item) => (
-            <button
+            <Link
               key={item}
+              to={`gestion/${item.toLowerCase()}`}
               className={currentTab == item ? "tabs active-tabs" : "tabs"}
               onClick={() => toggleTab(item)}
             >
               {item}
-            </button>
+            </Link>
           ))}
         </div>
       </div>

@@ -26,7 +26,7 @@ const DesktopNav = () => {
 
   useEffect(() => {
     dispatch(
-      setActiveModuleStyles(`flex gap-2 items-center lg:w-full px-5 py-3 rounded-md transition ease-in-out delay-50
+      setActiveModuleStyles(`flex gap-2 lg:w-full px-5 py-3 rounded-md transition ease-in-out delay-50
     bg-dark text-light ${!isOpen && "justify-center"}`)
     );
   }, [currentModule]);
