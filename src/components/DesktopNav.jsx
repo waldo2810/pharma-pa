@@ -48,7 +48,7 @@ const DesktopNav = () => {
               className={
                 currentModule == item.name
                   ? activeModuleStyles
-                  : `flex gap-2 items-center lg:w-full px-5 py-3 rounded-md text-[#000] transition ease-in-out delay-50
+                  : `flex gap-2 lg:w-full px-5 py-3 rounded-md text-[#000] transition ease-in-out delay-50
               hover:bg-dark hover:text-light ${!isOpen && "justify-center"}`
               }
               key={item.name}
