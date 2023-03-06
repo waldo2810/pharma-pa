@@ -30,7 +30,7 @@ const Tabs = () => {
   }, [currentModule]);
 
   return (
-    <div className={isNotAPhone && `my-10`}>
+    <div className={isNotAPhone && `mt-10 mb-5`}>
       {isNotAPhone && (
         <div className="px-5">
           <Link to="/" className="title">

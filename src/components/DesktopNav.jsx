@@ -1,19 +1,18 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import {
   toggleOff,
   toggleOn,
   setCurrentModule,
   setActiveModuleStyles,
 } from "../state/state";
-import { NavLink } from "react-router-dom";
 import { menuItems } from "../utils/menuItems";
-
 import { MdMenu as Toggle } from "react-icons/md";
-import { useEffect } from "react";
 
 const DesktopNav = () => {
-  const currentModule = useSelector((state) => state.currentModule);
   const dispatch = useDispatch();
+  const currentModule = useSelector((state) => state.currentModule);
   const isOpen = useSelector((state) => state.isOpen);
   const currentTab = useSelector((state) => state.currentTab);
   const activeModuleStyles = useSelector((state) => state.activeModuleStyles);
@@ -49,7 +48,7 @@ const DesktopNav = () => {
                 currentModule == item.name
                   ? activeModuleStyles
                   : `flex gap-2 lg:w-full px-5 py-3 rounded-md text-[#000] transition ease-in-out delay-50
-              hover:bg-dark hover:text-light ${!isOpen && "justify-center"}`
+                  hover:bg-dark hover:text-light ${!isOpen && "justify-center"}`
               }
               key={item.name}
               onClick={() => handleClick(item.name)}
