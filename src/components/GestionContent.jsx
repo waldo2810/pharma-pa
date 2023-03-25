@@ -18,18 +18,18 @@ const GestionContent = ({ tab }) => {
   const isNotAPhone = useMediaQuery("(min-width: 1000px)");
 
   useEffect(() => {
-    if (tab.toLowerCase() === "medicamentos") {
+    if (tab === "medicamentos") {
       setFormInfo(medicamentosFormInfo);
-    } else if (tab.toLowerCase() === "personas") {
+    } else if (tab === "personas") {
       setFormInfo(personasFormInfo);
-    } else if (tab.toLowerCase() === "bodega") {
+    } else if (tab === "bodega") {
       setFormInfo(bodegaFormInfo);
-    } else if (tab.toLowerCase() === "secciones") {
+    } else if (tab === "secciones") {
       setFormInfo(seccionesFormInfo);
-    } else if (tab.toLowerCase() === "correos") {
+    } else if (tab === "correos") {
       setFormInfo(correosFormInfo);
     }
-  }, [formInfo]);
+  });
 
   return (
     <div className="pb-20">

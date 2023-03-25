@@ -46,7 +46,7 @@ const MobileNav = () => {
         <div className="flex flex-col gap-2 items-center justify-center pt-5">
           {menuItems.map((item, index) => (
             <NavLink
-              to={`/${item.name.toLowerCase()}/${
+              to={`/${item.name}/${
                 item.name === "Gestion" ? `${currentTab}` : ""
               }`}
               className={

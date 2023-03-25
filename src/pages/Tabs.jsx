@@ -9,6 +9,8 @@ import {
   carteraTabsItems,
 } from "../utils/tabs-items/tabItems";
 
+import _ from "lodash";
+
 const Tabs = () => {
   const isNotAPhone = useMediaQuery("(min-width: 1000px)");
   const currentTab = useSelector((state) => state.currentTab);
@@ -18,16 +20,16 @@ const Tabs = () => {
   const navigate = useNavigate();
 
   const toggleTab = (tab) => {
-    dispatch(setCurrentTab({ currentTab: tab }));
+    dispatch(setCurrentTab({ currentTab: _.kebabCase(tab) }));
   };
 
   useEffect(() => {
-    if (currentModule === "Gestion") {
+    if (currentModule === "gestion") {
       setTabsItems(gestionTabsItems);
-    } else if (currentModule === "Cartera") {
+    } else if (currentModule === "cartera") {
       setTabsItems(carteraTabsItems);
     }
-  }, [currentModule]);
+  });
 
   return (
     <div className={isNotAPhone && `mt-10 mb-5`}>
@@ -43,8 +45,10 @@ const Tabs = () => {
           {tabItems.map((item) => (
             <Link
               key={item}
-              to={`gestion/${item.toLowerCase()}`}
-              className={currentTab == item ? "tabs active-tabs" : "tabs"}
+              to={`${currentModule}/${_.kebabCase(item)}`}
+              className={
+                currentTab === _.kebabCase(item) ? "tabs active-tabs" : "tabs"
+              }
               onClick={() => toggleTab(item)}
             >
               {item}

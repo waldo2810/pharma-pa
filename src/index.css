@@ -41,10 +41,16 @@ body {
 }
 .tabs:hover {
   color: #505050;
+  background-color: #fcfcfc;
+  border-bottom: 2.5px solid #112d4e;
 }
 
 .active-tabs {
   border-bottom: 2.5px solid #112d4e;
+}
+.active-tabs:hover {
+  background-color: transparent;
+  border-radius: 0;
 }
 
 /* MODULES */

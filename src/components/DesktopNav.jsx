@@ -25,8 +25,11 @@ const DesktopNav = () => {
 
   useEffect(() => {
     dispatch(
-      setActiveModuleStyles(`flex gap-2 lg:w-full px-5 py-3 rounded-md transition ease-in-out delay-50
-    bg-dark text-light ${!isOpen && "justify-center"}`)
+      setActiveModuleStyles(
+        `flex gap-2 lg:w-full px-5 py-3 rounded-md transition ease-in-out delay-50 bg-dark text-light ${
+          !isOpen && "justify-center"
+        }`
+      )
     );
   }, [currentModule]);
 
@@ -41,14 +44,11 @@ const DesktopNav = () => {
         <div className="nav-links flex flex-col gap-5 items-center pt-10 h-full">
           {menuItems.map((item) => (
             <NavLink
-              to={`/${item.name.toLowerCase()}/${
-                item.name === "Gestion" ? currentTab : ""
-              }`}
+              to={`/${item.name}/${item.name === "gestion" ? currentTab : ""}`}
               className={
                 currentModule == item.name
                   ? activeModuleStyles
-                  : `flex gap-2 lg:w-full px-5 py-3 rounded-md text-[#000] transition ease-in-out delay-50
-                  hover:bg-dark hover:text-light ${!isOpen && "justify-center"}`
+                  : `flex gap-2 lg:w-full px-5 py-3 rounded-md text-[#000] transition ease-in-out delay-50 hover:bg-dark hover:text-light`
               }
               key={item.name}
               onClick={() => handleClick(item.name)}
@@ -56,7 +56,7 @@ const DesktopNav = () => {
               <div className="text-[1.5rem]">{item.icon}</div>
               {isOpen && (
                 <div className="text">
-                  <p className="text-[0.9rem]">{item.name}</p>
+                  <p className="text-[0.9rem]">{item.label}</p>
                 </div>
               )}
             </NavLink>
