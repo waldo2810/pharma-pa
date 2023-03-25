@@ -7,8 +7,8 @@ export const gestionTabsItems = [
 ];
 
 export const carteraTabsItems = [
-  "cxc",
-  "cxp",
+  "cuentas-por-cobrar",
+  "cuentas-por-pagar",
   "abonos-cxc",
   "abonos-cxp",
   "informes",

@@ -1,8 +1,8 @@
 import SideBar from "./components/SideBar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
-import Gestion from "./pages/Gestion";
-import Cartera from "./pages/Cartera";
+import Gestion from "./pages/gestion/Gestion";
+import Cartera from "./pages/cartera/Cartera";
 import Facturacion from "./pages/Facturacion";
 
 const App = () => {

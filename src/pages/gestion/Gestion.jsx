@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import GestionContent from "../components/GestionContent";
+import GestionContent from "./GestionContent";
 
 const Gestion = () => {
   const currentGestionTab = useSelector((state) => state.currentGestionTab);
