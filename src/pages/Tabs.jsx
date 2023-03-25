@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setCurrentTab } from "../state/state";
-import { Link, useNavigate } from "react-router-dom";
+import { setCurrentGestionTab, setCurrentCarteraTab } from "../state/state";
+import { Link } from "react-router-dom";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 import {
@@ -13,14 +13,17 @@ import _ from "lodash";
 
 const Tabs = () => {
   const isNotAPhone = useMediaQuery("(min-width: 1000px)");
-  const currentTab = useSelector((state) => state.currentTab);
   const currentModule = useSelector((state) => state.currentModule);
   const [tabItems, setTabsItems] = useState([]);
+  const [currentTab, setCurrentTab] = useState("");
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const toggleTab = (tab) => {
-    dispatch(setCurrentTab({ currentTab: _.kebabCase(tab) }));
+    if (currentModule === "gestion")
+      dispatch(setCurrentGestionTab({ currentGestionTab: tab }));
+    if (currentModule === "cartera")
+      dispatch(setCurrentCarteraTab({ currentCarteraTab: tab }));
+    setCurrentTab(tab);
   };
 
   useEffect(() => {
@@ -45,13 +48,11 @@ const Tabs = () => {
           {tabItems.map((item) => (
             <Link
               key={item}
-              to={`${currentModule}/${_.kebabCase(item)}`}
-              className={
-                currentTab === _.kebabCase(item) ? "tabs active-tabs" : "tabs"
-              }
+              to={`${currentModule}/${item}`}
+              className={currentTab === item ? "tabs active-tabs" : "tabs"}
               onClick={() => toggleTab(item)}
             >
-              {item}
+              {_.startCase(item)}
             </Link>
           ))}
         </div>

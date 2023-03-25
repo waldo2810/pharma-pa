@@ -1,15 +1,15 @@
 export const gestionTabsItems = [
-  "Medicamentos",
-  "Personas",
-  "Bodega",
-  "Secciones",
-  "Correos",
+  "medicamentos",
+  "personas",
+  "bodega",
+  "secciones",
+  "correos",
 ];
 
 export const carteraTabsItems = [
-  "CxP",
-  "CxC",
-  "Abonos CxP",
-  "Abonos CxC",
-  "Informes",
+  "cxc",
+  "cxp",
+  "abonos-cxc",
+  "abonos-cxp",
+  "informes",
 ];

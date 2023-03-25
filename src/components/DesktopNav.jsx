@@ -14,7 +14,8 @@ const DesktopNav = () => {
   const dispatch = useDispatch();
   const currentModule = useSelector((state) => state.currentModule);
   const isOpen = useSelector((state) => state.isOpen);
-  const currentTab = useSelector((state) => state.currentTab);
+  const currentGestionTab = useSelector((state) => state.currentGestionTab);
+  const currentCarteraTab = useSelector((state) => state.currentCarteraTab);
   const activeModuleStyles = useSelector((state) => state.activeModuleStyles);
 
   const handleToggle = () =>
@@ -26,9 +27,7 @@ const DesktopNav = () => {
   useEffect(() => {
     dispatch(
       setActiveModuleStyles(
-        `flex gap-2 lg:w-full px-5 py-3 rounded-md transition ease-in-out delay-50 bg-dark text-light ${
-          !isOpen && "justify-center"
-        }`
+        `flex gap-2 lg:w-full px-5 py-3 rounded-md transition ease-in-out delay-50 bg-dark text-light`
       )
     );
   }, [currentModule]);
@@ -44,7 +43,9 @@ const DesktopNav = () => {
         <div className="nav-links flex flex-col gap-5 items-center pt-10 h-full">
           {menuItems.map((item) => (
             <NavLink
-              to={`/${item.name}/${item.name === "gestion" ? currentTab : ""}`}
+              to={`/${item.name}/${
+                item.name === "gestion" ? currentGestionTab : currentCarteraTab
+              }`}
               className={
                 currentModule == item.name
                   ? activeModuleStyles
