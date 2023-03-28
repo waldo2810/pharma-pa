@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import {
@@ -17,6 +17,14 @@ const DesktopNav = () => {
   const currentGestionTab = useSelector((state) => state.currentGestionTab);
   const currentCarteraTab = useSelector((state) => state.currentCarteraTab);
   const activeModuleStyles = useSelector((state) => state.activeModuleStyles);
+
+  const tabMapping = {
+    dashboard: "",
+    gestion: `/${currentGestionTab}`,
+    cartera: `/${currentCarteraTab}`,
+    facturacion: "",
+    // add more modules and their corresponding tabs as needed
+  };
 
   const handleToggle = () =>
     isOpen ? dispatch(toggleOff()) : dispatch(toggleOn());
@@ -43,9 +51,7 @@ const DesktopNav = () => {
         <div className="nav-links flex flex-col gap-5 items-center pt-10 h-full">
           {menuItems.map((item) => (
             <NavLink
-              to={`/${item.name}/${
-                item.name === "gestion" ? currentGestionTab : currentCarteraTab
-              }`}
+              to={`/${item.name}${tabMapping[item.name]}`}
               className={
                 currentModule == item.name
                   ? activeModuleStyles

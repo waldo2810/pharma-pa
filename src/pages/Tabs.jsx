@@ -45,14 +45,14 @@ const Tabs = () => {
       )}
       <div className={`border-b border-dark ${isNotAPhone && "pt-3"}`}>
         <div className="flex gap-3 overflow-auto no-scrollbar text-sm font-medium">
-          {tabItems.map((item) => (
+          {tabItems.map((tab) => (
             <Link
-              key={item}
-              to={`${currentModule}/${item}`}
-              className={currentTab === item ? "tabs active-tabs" : "tabs"}
-              onClick={() => toggleTab(item)}
+              key={tab}
+              to={`${currentModule}/${tab}`}
+              className={currentTab === tab ? "tabs active-tabs" : "tabs"}
+              onClick={() => toggleTab(tab)}
             >
-              {_.startCase(item)}
+              {_.startCase(tab)}
             </Link>
           ))}
         </div>

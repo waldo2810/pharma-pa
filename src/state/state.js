@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isOpen: false,
-  currentTab: "medicamentos",
   currentGestionTab: "medicamentos",
   currentCarteraTab: "cxc",
   currentModule: "dashboard",
@@ -18,9 +17,6 @@ export const stateSlice = createSlice({
     },
     toggleOff: (state) => {
       state.isOpen = false;
-    },
-    setCurrentTab: (state, action) => {
-      state.currentTab = action.payload.currentTab;
     },
     setCurrentGestionTab: (state, action) => {
       state.currentGestionTab = action.payload.currentGestionTab;
@@ -40,7 +36,6 @@ export const stateSlice = createSlice({
 export const {
   toggleOn,
   toggleOff,
-  setCurrentTab,
   setCurrentGestionTab,
   setCurrentCarteraTab,
   setCurrentModule,
