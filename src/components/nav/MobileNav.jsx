@@ -5,18 +5,30 @@ import {
   toggleOn,
   setCurrentModule,
   setActiveModuleStyles,
-} from "../state/state";
+} from "../../state/state";
 import { NavLink } from "react-router-dom";
-import { menuItems } from "../utils/menuItems";
+import { menuItems } from "../../utils/menuItems";
 
 import { MdMenu as Toggle } from "react-icons/md";
+import { NavContainer, NavLinkContainer, TitleContainer } from "./Nav.styles";
+import { useMediaQuery } from "@mui/material";
 
 const MobileNav = () => {
-  const isOpen = useSelector((state) => state.isOpen);
-  const currentTab = useSelector((state) => state.currentTab);
-  const currentModule = useSelector((state) => state.currentModule);
-  const activeModuleStyles = useSelector((state) => state.activeModuleStyles);
   const dispatch = useDispatch();
+  const isOpen = useSelector((state) => state.isOpen);
+  const currentModule = useSelector((state) => state.currentModule);
+  const currentGestionTab = useSelector((state) => state.currentGestionTab);
+  const currentCarteraTab = useSelector((state) => state.currentCarteraTab);
+  const activeModuleStyles = useSelector((state) => state.activeModuleStyles);
+  const isNotAPhone = useMediaQuery("(min-width: 1000px)");
+
+  const tabMapping = {
+    dashboard: "",
+    gestion: `/${currentGestionTab}`,
+    cartera: `/${currentCarteraTab}`,
+    facturacion: "",
+    // add more modules and their corresponding tabs as needed
+  };
 
   const handleToggle = () =>
     isOpen ? dispatch(toggleOff()) : dispatch(toggleOn());
@@ -34,41 +46,37 @@ const MobileNav = () => {
   }, [currentModule]);
 
   return (
-    // MOBILE NAV
-    <div className="sidebar bg-lightblue p-5">
-      <div className="flex items-center justify-between">
+    <NavContainer isNotAPhone={isNotAPhone} isOpen={isOpen}>
+      <TitleContainer>
         <Toggle className="text-4xl cursor-pointer" onClick={handleToggle} />
-        <NavLink to="/" className="title">
+        <NavLink
+          to="/"
+          className="title"
+          onClick={() => handleClick("dashboard")}
+        >
           pharma.pa
         </NavLink>
-      </div>
+      </TitleContainer>
       {isOpen && (
-        <div className="flex flex-col gap-2 items-center justify-center pt-5">
-          {menuItems.map((item, index) => (
+        <NavLinkContainer isNotAPhone={isNotAPhone}>
+          {menuItems.map((item) => (
             <NavLink
-              to={`/${item.name}/${
-                item.name === "Gestion" ? `${currentTab}` : ""
-              }`}
+              to={`/${item.name}${tabMapping[item.name]}`}
               className={
                 currentModule == item.name
                   ? activeModuleStyles
                   : `flex gap-2 items-center w-full lg:w-[70%] px-5 py-3 rounded-md text-[#000] transition ease-in-out delay-50 hover:bg-dark hover:text-light`
               }
-              // className={
-              //   currentModule == item.name
-              //     ? activeModuleStyles
-              //     : `flex gap-2 items-center lg:w-full px-5 py-3 rounded-md text-[#000] transition ease-in-out delay-50
-              // hover:bg-dark hover:text-light ${!isOpen && "justify-center"}`}
-              key={index}
+              key={item.name}
               onClick={() => handleClick(item.name)}
             >
               {item.icon}
-              <p className="text-[0.9rem]">{item.name}</p>
+              <p className="text-[0.9rem]">{item.label}</p>
             </NavLink>
           ))}
-        </div>
+        </NavLinkContainer>
       )}
-    </div>
+    </NavContainer>
   );
 };
 

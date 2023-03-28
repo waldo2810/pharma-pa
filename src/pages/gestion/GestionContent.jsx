@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import Button from "../../components/Button";
-import Input from "../../components/Input";
+import Button from "../../components/button/Button";
+import Input from "../../components/input/Input";
 
 import {
   medicamentosFormInfo,
@@ -10,6 +10,13 @@ import {
   seccionesFormInfo,
   correosFormInfo,
 } from "../../utils/form-info/gestionFormInfo";
+
+import {
+  GestionContentWrapper,
+  GestionContentHeader,
+  GestionContentFormWrapper,
+  GestionContentButtonWrapper,
+} from "./GestionContent.styles";
 
 import { useMediaQuery } from "@mui/material";
 
@@ -32,30 +39,24 @@ const GestionContent = ({ tab }) => {
   });
 
   return (
-    <div className="pb-20">
-      <h2 className="text-2xl font-medium p-5">Agregar {tab}</h2>
-      <div className="md:border md:border-lightblue md:mx-5 md:rounded-md md:max-w-[80%]">
+    <GestionContentWrapper>
+      <GestionContentHeader>Agregar {tab}</GestionContentHeader>
+      <GestionContentFormWrapper>
         <form>
-          <div>
-            {formInfo.map(({ title, description, type }, index) => (
-              <Input
-                type={type}
-                key={index}
-                title={title}
-                description={description}
-              />
-            ))}
-          </div>
-          <div
-            className={`${
-              !isNotAPhone && "fixed"
-            } bottom-0 flex justify-end items-center p-5 w-full h-12 bg-lightblue`}
-          >
+          {formInfo.map(({ title, description, type }, index) => (
+            <Input
+              type={type}
+              key={index}
+              title={title}
+              description={description}
+            />
+          ))}
+          <GestionContentButtonWrapper isNotAPhone={isNotAPhone}>
             <Button text="Guardar" />
-          </div>
+          </GestionContentButtonWrapper>
         </form>
-      </div>
-    </div>
+      </GestionContentFormWrapper>
+    </GestionContentWrapper>
   );
 };
 
